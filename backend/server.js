@@ -30,9 +30,9 @@
 // })
 
 
-const express = require('express'); // Add this line to require express
-const path = require('path'); // Add this line to require path
-const app = require('./app');
+const express = require('express'); // Require express
+const path = require('path'); // Require path
+const app = require('./app'); // Require the app module
 
 // Handle uncaught exceptions
 process.on('uncaughtException', (err) => {
@@ -48,11 +48,12 @@ if (process.env.NODE_ENV !== 'PRODUCTION') {
     });
 }
 
+// Serve static files from the frontend dist directory
 app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 
-// Connect database (You should add your database connection code here)
+// Connect to database (Add your database connection code here)
 
-// Create server
+// Create and start the server
 const server = app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
@@ -66,3 +67,4 @@ process.on('unhandledRejection', (err) => {
         process.exit(1);
     });
 });
+
