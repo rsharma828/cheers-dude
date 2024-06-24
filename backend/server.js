@@ -13,6 +13,8 @@ if(process.env.Node_ENV !== "PRODUCTION"){
     })
 }
 
+app.use(express.static(path.join(__dirname,"../../frontend/dist")));
+
 // connect database
 
 
